@@ -2,6 +2,8 @@ package twebtool
 
 class IdiomaController {
 
+        def textoService
+
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index = {
@@ -22,6 +24,7 @@ class IdiomaController {
     def save = {
         def idiomaInstance = new Idioma(params)
         if (idiomaInstance.save(flush: true)) {
+            textoService.initializeByIdioma(idiomaInstance)     
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'idioma.label', default: 'Idioma'), idiomaInstance.id])}"
             redirect(action: "show", id: idiomaInstance.id)
         }

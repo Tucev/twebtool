@@ -13,10 +13,10 @@ hibernate {
 environments {
 	development {
 		dataSource{
-		    dbcreate = "create-drop" // one of 'create', 'create-drop','update'
+//		    dbcreate = "create-drop" // one of 'create', 'create-drop','update'
 //			url = "jdbc:hsqldb:mem:devDB"
-//                    dbCreate = "update";
-                    url = "jdbc:mysql://localhost/i18npropeditorDB";
+                    dbCreate = "update";
+                    url = "jdbc:mysql://localhost/twebtooldb";
                     driverClassName = "com.mysql.jdbc.Driver"
                     dialect = "org.hibernate.dialect.MySQLInnoDBDialect"
                     username = "root"

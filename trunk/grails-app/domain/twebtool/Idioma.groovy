@@ -22,11 +22,6 @@ class Idioma {
                 return nombre
         }
 
-        def afterSave() {
-//                TextoService textoService
-//                textoService.initiateIdioma(this)
-                return true;
-        }
 
 
 }
