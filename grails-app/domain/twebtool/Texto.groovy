@@ -3,11 +3,11 @@ package twebtool
 class Texto {
 
         String valor
-        Clave claves
-        Idioma idiomas
+        //Clave claves
+        //Idioma idiomas
 
         static constraints = {
-
+                valor(nullable: true, blank: true)
         }
 
         static hasMany = [
@@ -25,7 +25,6 @@ class Texto {
                 Idioma
         ]
  
-
 
         @Override public String toString() {
                 return valor

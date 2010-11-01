@@ -2,6 +2,8 @@ package twebtool
 
 class ClaveController {
 
+        def textoService
+
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index = {
@@ -22,6 +24,7 @@ class ClaveController {
     def save = {
         def claveInstance = new Clave(params)
         if (claveInstance.save(flush: true)) {
+            textoService.initializeByClave(claveInstance)     
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'clave.label', default: 'Clave'), claveInstance.id])}"
             redirect(action: "show", id: claveInstance.id)
         }
