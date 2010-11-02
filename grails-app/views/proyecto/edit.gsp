@@ -1,10 +1,10 @@
 
-<%@ page import="twebtool.Clave" %>
+<%@ page import="twebtool.Proyecto" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'clave.label', default: 'Clave')}" />
+        <g:set var="entityName" value="${message(code: 'proyecto.label', default: 'Proyecto')}" />
         <title><g:message code="default.edit.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -18,58 +18,51 @@
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            <g:hasErrors bean="${claveInstance}">
+            <g:hasErrors bean="${proyectoInstance}">
             <div class="errors">
-                <g:renderErrors bean="${claveInstance}" as="list" />
+                <g:renderErrors bean="${proyectoInstance}" as="list" />
             </div>
             </g:hasErrors>
             <g:form method="post" >
-                <g:hiddenField name="id" value="${claveInstance?.id}" />
-                <g:hiddenField name="version" value="${claveInstance?.version}" />
+                <g:hiddenField name="id" value="${proyectoInstance?.id}" />
+                <g:hiddenField name="version" value="${proyectoInstance?.version}" />
                 <div class="dialog">
                     <table>
                         <tbody>
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="nombre"><g:message code="clave.nombre.label" default="Nombre" /></label>
+                                  <label for="nombre"><g:message code="proyecto.nombre.label" default="Nombre" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: claveInstance, field: 'nombre', 'errors')}">
-                                    <g:textField name="nombre" value="${claveInstance?.nombre}" />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="descripcion"><g:message code="clave.descripcion.label" default="Descripcion" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: claveInstance, field: 'descripcion', 'errors')}">
-                                    <g:textField name="descripcion" value="${claveInstance?.descripcion}" />
+                                <td valign="top" class="value ${hasErrors(bean: proyectoInstance, field: 'nombre', 'errors')}">
+                                    <g:textField name="nombre" value="${proyectoInstance?.nombre}" />
                                 </td>
                             </tr>
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="textos"><g:message code="clave.textos.label" default="Textos" /></label>
+                                  <label for="logo"><g:message code="proyecto.logo.label" default="Logo" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: claveInstance, field: 'textos', 'errors')}">
-                                    
-<ul>
-<g:each in="${claveInstance?.textos?}" var="t">
-    <li><g:link controller="texto" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></li>
-</g:each>
-</ul>
-<g:link controller="texto" action="create" params="['clave.id': claveInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'texto.label', default: 'Texto')])}</g:link>
-
+                                <td valign="top" class="value ${hasErrors(bean: proyectoInstance, field: 'logo', 'errors')}">
+                                    <g:textField name="logo" value="${proyectoInstance?.logo}" />
                                 </td>
                             </tr>
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="proyecto"><g:message code="clave.proyecto.label" default="Proyecto" /></label>
+                                  <label for="idiomas"><g:message code="proyecto.idiomas.label" default="Idiomas" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: claveInstance, field: 'proyecto', 'errors')}">
-                                    <g:select name="proyecto.id" from="${twebtool.Proyecto.list()}" optionKey="id" value="${claveInstance?.proyecto?.id}"  />
+                                <td valign="top" class="value ${hasErrors(bean: proyectoInstance, field: 'idiomas', 'errors')}">
+                                    <g:select name="idiomas" from="${twebtool.Idioma.list()}" multiple="yes" optionKey="id" size="5" value="${proyectoInstance?.idiomas*.id}" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="claves"><g:message code="proyecto.claves.label" default="Claves" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: proyectoInstance, field: 'claves', 'errors')}">
+                                    <g:select name="claves" from="${twebtool.Clave.list()}" multiple="yes" optionKey="id" size="5" value="${proyectoInstance?.claves*.id}" />
                                 </td>
                             </tr>
                         

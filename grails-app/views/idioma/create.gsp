@@ -45,6 +45,15 @@
                                 </td>
                             </tr>
                         
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="proyecto"><g:message code="idioma.proyecto.label" default="Proyecto" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: idiomaInstance, field: 'proyecto', 'errors')}">
+                                    <g:select name="proyecto.id" from="${twebtool.Proyecto.list()}" optionKey="id" value="${idiomaInstance?.proyecto?.id}"  />
+                                </td>
+                            </tr>
+                        
                         </tbody>
                     </table>
                 </div>

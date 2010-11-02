@@ -1,10 +1,10 @@
 
-<%@ page import="twebtool.Clave" %>
+<%@ page import="twebtool.Proyecto" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'clave.label', default: 'Clave')}" />
+        <g:set var="entityName" value="${message(code: 'proyecto.label', default: 'Proyecto')}" />
         <title><g:message code="default.show.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -23,33 +23,33 @@
                     <tbody>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="clave.id.label" default="Id" /></td>
+                            <td valign="top" class="name"><g:message code="proyecto.id.label" default="Id" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: claveInstance, field: "id")}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="clave.nombre.label" default="Nombre" /></td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean: claveInstance, field: "nombre")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: proyectoInstance, field: "id")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="clave.descripcion.label" default="Descripcion" /></td>
+                            <td valign="top" class="name"><g:message code="proyecto.nombre.label" default="Nombre" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: claveInstance, field: "descripcion")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: proyectoInstance, field: "nombre")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="clave.textos.label" default="Textos" /></td>
+                            <td valign="top" class="name"><g:message code="proyecto.logo.label" default="Logo" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: proyectoInstance, field: "logo")}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="proyecto.idiomas.label" default="Idiomas" /></td>
                             
                             <td valign="top" style="text-align: left;" class="value">
                                 <ul>
-                                <g:each in="${claveInstance.textos}" var="t">
-                                    <li><g:link controller="texto" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></li>
+                                <g:each in="${proyectoInstance.idiomas}" var="i">
+                                    <li><g:link controller="idioma" action="show" id="${i.id}">${i?.encodeAsHTML()}</g:link></li>
                                 </g:each>
                                 </ul>
                             </td>
@@ -57,9 +57,15 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="clave.proyecto.label" default="Proyecto" /></td>
+                            <td valign="top" class="name"><g:message code="proyecto.claves.label" default="Claves" /></td>
                             
-                            <td valign="top" class="value"><g:link controller="proyecto" action="show" id="${claveInstance?.proyecto?.id}">${claveInstance?.proyecto?.encodeAsHTML()}</g:link></td>
+                            <td valign="top" style="text-align: left;" class="value">
+                                <ul>
+                                <g:each in="${proyectoInstance.claves}" var="c">
+                                    <li><g:link controller="clave" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
+                                </g:each>
+                                </ul>
+                            </td>
                             
                         </tr>
                     
@@ -68,7 +74,7 @@
             </div>
             <div class="buttons">
                 <g:form>
-                    <g:hiddenField name="id" value="${claveInstance?.id}" />
+                    <g:hiddenField name="id" value="${proyectoInstance?.id}" />
                     <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'default.button.edit.label', default: 'Edit')}" /></span>
                     <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
                 </g:form>

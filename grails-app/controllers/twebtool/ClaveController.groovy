@@ -2,7 +2,7 @@ package twebtool
 
 class ClaveController {
 
-        def claveService
+    def claveService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
