@@ -2,7 +2,7 @@ package twebtool
 
 class IdiomaController {
 
-        def textoService
+        def idiomaService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -22,15 +22,15 @@ class IdiomaController {
     }
 
     def save = {
-        def idiomaInstance = new Idioma(params)
-        if (idiomaInstance.save(flush: true)) {
-            textoService.initializeByIdioma(idiomaInstance)     
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'idioma.label', default: 'Idioma'), idiomaInstance.id])}"
-            redirect(action: "show", id: idiomaInstance.id)
+
+        def idioma = idiomaService.newIdioma(params)
+        if(idioma.hasErrors()){
+                render(view: "create", model: [idiomaInstance: idioma])     
+        }else{
+                flash.message = "${message(code: 'default.created.message', args: [message(code: 'idioma.label', default: 'idioma'), idioma.id])}"       
+                redirect(action: "show", id: idioma.id)
         }
-        else {
-            render(view: "create", model: [idiomaInstance: idiomaInstance])
-        }
+
     }
 
     def show = {
@@ -83,10 +83,12 @@ class IdiomaController {
     }
 
     def delete = {
+
+
         def idiomaInstance = Idioma.get(params.id)
         if (idiomaInstance) {
             try {
-                idiomaInstance.delete(flush: true)
+                def idioma = idiomaService.newIdioma(params)
                 flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'idioma.label', default: 'Idioma'), params.id])}"
                 redirect(action: "list")
             }
