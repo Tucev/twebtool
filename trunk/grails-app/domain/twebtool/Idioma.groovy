@@ -16,10 +16,6 @@ class Idioma {
 
 
 
-        static mappedBy = [
-                textos: "idiomas"
-        ]
-
         @Override public String toString() {
                 return nombre
         }

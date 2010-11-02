@@ -17,11 +17,6 @@ class Clave {
                 textos: Texto
         ]
 
-
-        static mappedBy = [
-                textos: "claves"
-        ]
-
         @Override public String toString() {
                 return nombre
         }
