@@ -56,6 +56,13 @@
                             
                         </tr>
                     
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="idioma.proyecto.label" default="Proyecto" /></td>
+                            
+                            <td valign="top" class="value"><g:link controller="proyecto" action="show" id="${idiomaInstance?.proyecto?.id}">${idiomaInstance?.proyecto?.encodeAsHTML()}</g:link></td>
+                            
+                        </tr>
+                    
                     </tbody>
                 </table>
             </div>

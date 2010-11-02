@@ -1,10 +1,10 @@
 
-<%@ page import="twebtool.Idioma" %>
+<%@ page import="twebtool.Proyecto" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'idioma.label', default: 'Idioma')}" />
+        <g:set var="entityName" value="${message(code: 'proyecto.label', default: 'Proyecto')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -22,27 +22,23 @@
                     <thead>
                         <tr>
                         
-                            <g:sortableColumn property="id" title="${message(code: 'idioma.id.label', default: 'Id')}" />
+                            <g:sortableColumn property="id" title="${message(code: 'proyecto.id.label', default: 'Id')}" />
                         
-                            <g:sortableColumn property="nombre" title="${message(code: 'idioma.nombre.label', default: 'Nombre')}" />
+                            <g:sortableColumn property="nombre" title="${message(code: 'proyecto.nombre.label', default: 'Nombre')}" />
                         
-                            <g:sortableColumn property="localeValue" title="${message(code: 'idioma.localeValue.label', default: 'Locale Value')}" />
+                            <g:sortableColumn property="logo" title="${message(code: 'proyecto.logo.label', default: 'Logo')}" />
                         
-                            <th><g:message code="idioma.proyecto.label" default="Proyecto" /></th>
-                   	    
                         </tr>
                     </thead>
                     <tbody>
-                    <g:each in="${idiomaInstanceList}" status="i" var="idiomaInstance">
+                    <g:each in="${proyectoInstanceList}" status="i" var="proyectoInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
-                            <td><g:link action="show" id="${idiomaInstance.id}">${fieldValue(bean: idiomaInstance, field: "id")}</g:link></td>
+                            <td><g:link action="show" id="${proyectoInstance.id}">${fieldValue(bean: proyectoInstance, field: "id")}</g:link></td>
                         
-                            <td>${fieldValue(bean: idiomaInstance, field: "nombre")}</td>
+                            <td>${fieldValue(bean: proyectoInstance, field: "nombre")}</td>
                         
-                            <td>${fieldValue(bean: idiomaInstance, field: "localeValue")}</td>
-                        
-                            <td>${fieldValue(bean: idiomaInstance, field: "proyecto")}</td>
+                            <td>${fieldValue(bean: proyectoInstance, field: "logo")}</td>
                         
                         </tr>
                     </g:each>
@@ -50,7 +46,7 @@
                 </table>
             </div>
             <div class="paginateButtons">
-                <g:paginate total="${idiomaInstanceTotal}" />
+                <g:paginate total="${proyectoInstanceTotal}" />
             </div>
         </div>
     </body>

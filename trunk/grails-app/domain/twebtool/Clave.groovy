@@ -4,9 +4,7 @@ class Clave {
 
         String nombre
         String descripcion
-
-
-        def textoService
+        Proyecto proyecto
 
         static constraints = {
                 nombre(nullable: false, blank: false)
@@ -15,6 +13,10 @@ class Clave {
         
         static hasMany = [
                 textos: Texto
+        ]
+
+        static belongsTo = [
+                Proyecto
         ]
 
         @Override public String toString() {

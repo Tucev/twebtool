@@ -4,6 +4,7 @@ class Idioma {
 
         String nombre
         String localeValue
+        Proyecto proyecto
 
         static constraints = {
                 nombre(nullable: false, blank: false)
@@ -14,7 +15,9 @@ class Idioma {
                 textos: Texto
         ]
 
-
+        static belongsTo = [
+                Proyecto
+        ]
 
         @Override public String toString() {
                 return nombre
