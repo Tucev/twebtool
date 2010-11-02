@@ -14,9 +14,8 @@ class ClaveService {
                 claveInstance.save()
                 def idiomas = Idioma.findAll();
                 idiomas.each{
-                        def texto = new Texto(valor:'')
-                                .addToClaves(claveInstance)
-                                .addToIdiomas(it)
+                        claveInstance
+                                .addToTextos(new Texto(valor:'',idioma:it))
                                 .save()
                 }
         }

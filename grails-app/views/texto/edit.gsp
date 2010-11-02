@@ -32,15 +32,6 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="idiomas"><g:message code="texto.idiomas.label" default="Idiomas" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: textoInstance, field: 'idiomas', 'errors')}">
-                                    <g:select name="idiomas.id" from="${twebtool.Idioma.list()}" optionKey="id" value="${textoInstance?.idiomas?.id}"  />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
                                   <label for="valor"><g:message code="texto.valor.label" default="Valor" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: textoInstance, field: 'valor', 'errors')}">
@@ -50,10 +41,19 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="claves"><g:message code="texto.claves.label" default="Claves" /></label>
+                                  <label for="idioma"><g:message code="texto.idioma.label" default="Idioma" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: textoInstance, field: 'claves', 'errors')}">
-                                    <g:select name="claves.id" from="${twebtool.Clave.list()}" optionKey="id" value="${textoInstance?.claves?.id}"  />
+                                <td valign="top" class="value ${hasErrors(bean: textoInstance, field: 'idioma', 'errors')}">
+                                    <g:select name="idioma.id" from="${twebtool.Idioma.list()}" optionKey="id" value="${textoInstance?.idioma?.id}"  />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="clave"><g:message code="texto.clave.label" default="Clave" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: textoInstance, field: 'clave', 'errors')}">
+                                    <g:select name="clave.id" from="${twebtool.Clave.list()}" optionKey="id" value="${textoInstance?.clave?.id}"  />
                                 </td>
                             </tr>
                         

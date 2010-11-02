@@ -24,11 +24,11 @@
                         
                             <g:sortableColumn property="id" title="${message(code: 'texto.id.label', default: 'Id')}" />
                         
-                            <th><g:message code="texto.idiomas.label" default="Idiomas" /></th>
-                   	    
                             <g:sortableColumn property="valor" title="${message(code: 'texto.valor.label', default: 'Valor')}" />
                         
-                            <th><g:message code="texto.claves.label" default="Claves" /></th>
+                            <th><g:message code="texto.idioma.label" default="Idioma" /></th>
+                   	    
+                            <th><g:message code="texto.clave.label" default="Clave" /></th>
                    	    
                         </tr>
                     </thead>
@@ -38,11 +38,11 @@
                         
                             <td><g:link action="show" id="${textoInstance.id}">${fieldValue(bean: textoInstance, field: "id")}</g:link></td>
                         
-                            <td>${fieldValue(bean: textoInstance, field: "idiomas")}</td>
-                        
                             <td>${fieldValue(bean: textoInstance, field: "valor")}</td>
                         
-                            <td>${fieldValue(bean: textoInstance, field: "claves")}</td>
+                            <td>${fieldValue(bean: textoInstance, field: "idioma")}</td>
+                        
+                            <td>${fieldValue(bean: textoInstance, field: "clave")}</td>
                         
                         </tr>
                     </g:each>

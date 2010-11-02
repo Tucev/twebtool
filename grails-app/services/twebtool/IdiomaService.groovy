@@ -14,26 +14,13 @@ class IdiomaService {
                 idiomaInstance.save()
                 def claves = Clave.findAll();
                 claves.each{
-                        def texto = new Texto(valor:'')
-                                .addToClaves(it)
-                                .addToIdiomas(idiomaInstance)
+                        idiomaInstance
+                                .addToTextos(new Texto(valor:'',clave:it))
                                 .save()
                 }
         }
 
         return idiomaInstance
-    }
-
-    def deleteIdioma(params){
-        def idiomaInstance = Idioma.get(params.id)
-
-        def textos = Texto.findAllByIdioma(idiomaInstance);
-                textos.each{
-                        println it.nombre
-                        it.delete(flush:true);
-                }
-        idiomaInstance.delete(flush:true)
-   
     }
 
 }

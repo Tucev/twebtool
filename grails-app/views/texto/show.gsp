@@ -30,13 +30,6 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="texto.idiomas.label" default="Idiomas" /></td>
-                            
-                            <td valign="top" class="value"><g:link controller="idioma" action="show" id="${textoInstance?.idiomas?.id}">${textoInstance?.idiomas?.encodeAsHTML()}</g:link></td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
                             <td valign="top" class="name"><g:message code="texto.valor.label" default="Valor" /></td>
                             
                             <td valign="top" class="value">${fieldValue(bean: textoInstance, field: "valor")}</td>
@@ -44,9 +37,16 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="texto.claves.label" default="Claves" /></td>
+                            <td valign="top" class="name"><g:message code="texto.idioma.label" default="Idioma" /></td>
                             
-                            <td valign="top" class="value"><g:link controller="clave" action="show" id="${textoInstance?.claves?.id}">${textoInstance?.claves?.encodeAsHTML()}</g:link></td>
+                            <td valign="top" class="value"><g:link controller="idioma" action="show" id="${textoInstance?.idioma?.id}">${textoInstance?.idioma?.encodeAsHTML()}</g:link></td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="texto.clave.label" default="Clave" /></td>
+                            
+                            <td valign="top" class="value"><g:link controller="clave" action="show" id="${textoInstance?.clave?.id}">${textoInstance?.clave?.encodeAsHTML()}</g:link></td>
                             
                         </tr>
                     

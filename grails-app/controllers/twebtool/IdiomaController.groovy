@@ -83,12 +83,10 @@ class IdiomaController {
     }
 
     def delete = {
-
-
         def idiomaInstance = Idioma.get(params.id)
         if (idiomaInstance) {
             try {
-                def idioma = idiomaService.newIdioma(params)
+                idiomaInstance.delete(flush: true)
                 flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'idioma.label', default: 'Idioma'), params.id])}"
                 redirect(action: "list")
             }
