@@ -16,7 +16,8 @@ class Clave {
         static hasMany = [
                 textos: Texto
         ]
-        
+
+
         static mappedBy = [
                 textos: "claves"
         ]

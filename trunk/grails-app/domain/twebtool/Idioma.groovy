@@ -13,7 +13,9 @@ class Idioma {
         static hasMany = [
                 textos: Texto
         ]
-        
+
+
+
         static mappedBy = [
                 textos: "idiomas"
         ]

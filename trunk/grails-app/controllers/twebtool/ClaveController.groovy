@@ -2,7 +2,7 @@ package twebtool
 
 class ClaveController {
 
-        def textoService
+        def claveService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -22,15 +22,15 @@ class ClaveController {
     }
 
     def save = {
-        def claveInstance = new Clave(params)
-        if (claveInstance.save(flush: true)) {
-            textoService.initializeByClave(claveInstance)     
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'clave.label', default: 'Clave'), claveInstance.id])}"
-            redirect(action: "show", id: claveInstance.id)
+
+        def clave = claveService.newClave(params)
+        if(clave.hasErrors()){
+                render(view: "create", model: [claveInstance: clave])     
+        }else{
+                flash.message = "${message(code: 'default.created.message', args: [message(code: 'clave.label', default: 'Clave'), clave.id])}"       
+                redirect(action: "show", id: clave.id)
         }
-        else {
-            render(view: "create", model: [claveInstance: claveInstance])
-        }
+
     }
 
     def show = {
