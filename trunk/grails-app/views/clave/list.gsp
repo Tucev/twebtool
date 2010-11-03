@@ -5,6 +5,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'clave.label', default: 'Clave')}" />
+<g:javascript library="prototype" />
+
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -13,10 +15,21 @@
             <span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span>
         </div>
         <div class="body">
+            <h1><g:message code="default.import.label" args="[entityName]" /></h1>
+<g:form controller="clave" method="post" action="upload" enctype="multipart/form-data">
+    File <input type="file" name="file"/>
+</br>
+    <input type="submit" />
+</g:form>
+
             <h1><g:message code="default.list.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
+            <g:if test="${flash.error}">
+            <div class="errors"><ul><li>${flash.error}</li></ul></div>
+            </g:if>
+
             <div class="list">
                 <table>
                     <thead>

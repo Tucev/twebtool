@@ -5,6 +5,8 @@ class ProyectoController {
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index = {
+        //TODO METER PROYECTO SELECCIONADO
+        session.proyecto = params.proyecto;
         redirect(action: "list", params: params)
     }
 

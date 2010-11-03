@@ -15,6 +15,26 @@ class ClaveController {
         [claveInstanceList: Clave.list(params), claveInstanceTotal: Clave.count()]
     }
 
+    def upload = {
+        def f = request.getFile('file')
+            if(!f.empty) {
+              def props = new Properties()
+                try{
+                        props.load(f.inputStream)
+                        claveService.initialImport(props, Proyecto.findByNombre('PRUEBA'))
+                        flash.message = 'Imported!'
+                } catch(Exception e){
+                        e.printStackTrace();
+                        flash.error = 'Error ${e.getMessage()}'
+                }
+            }    
+            else {
+               flash.error = 'File cannot be empty'
+
+            }
+               redirect(action:'list')
+    }
+
     def create = {
         def claveInstance = new Clave()
         claveInstance.properties = params
