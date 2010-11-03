@@ -17,9 +17,9 @@
         <div class="body">
             <h1><g:message code="default.import.label" args="[entityName]" /></h1>
 <g:form controller="clave" method="post" action="upload" enctype="multipart/form-data">
-    File <input type="file" name="file"/>
-</br>
-    <input type="submit" />
+    <input type="file" name="file"/><input type="submit" onclick="return confirm('${message(code: 'import.init.question', default: 'Are you sure?')}');" />
+
+
 </g:form>
 
             <h1><g:message code="default.list.label" args="[entityName]" /></h1>
