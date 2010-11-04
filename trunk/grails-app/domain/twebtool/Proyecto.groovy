@@ -7,7 +7,7 @@ class Proyecto {
         String logo
 
         static constraints = {
-                nombre(nullable: false, blank: false)
+                nombre(nullable: false, blank: false, unique:true)
                 logo(nullable: true, blank: true)
         }
 
@@ -15,7 +15,9 @@ class Proyecto {
                 claves: Clave,
                 idiomas: Idioma
         ]
-    
 
+        @Override public String toString() {
+                return nombre
+        }
 
 }

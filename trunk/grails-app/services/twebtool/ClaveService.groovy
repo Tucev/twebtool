@@ -25,14 +25,23 @@ class ClaveService {
 
 
     def initialImport(Properties props, Proyecto proyecto){
-        
-        def idiomaDefault = initializeData(proyecto)
-        props.propertyNames().each{
+        initializeData(proyecto)
+        def idiomas = Idioma.findAllByProyecto(proyecto)
+
+        props.propertyNames().each{ it ->
                 def claveInstance = new Clave(nombre:it,proyecto:proyecto,descripcion:'')
                 claveInstance.save()
-                claveInstance
-                        .addToTextos(new Texto(valor:props.getProperty(it),idioma:idiomaDefault))
-                        .save()
+                idiomas.each{ id ->
+                        def valorDefault 
+                        if(id.nombre=='default'){
+                                valorDefault = props.getProperty(it)
+                        }else{
+                                valorDefault = ''
+                        }
+                        claveInstance
+                                .addToTextos(new Texto(valor:valorDefault,idioma:id))
+                                .save()
+                }
         }
 
     }
@@ -40,20 +49,12 @@ class ClaveService {
 
     private initializeData(Proyecto proyecto){
 
-        //borramos todos los textos, claves e idiomas
-        def idiomas = Idioma.findAllByProyecto(proyecto)        
+        //borramos todos los textos y claves         
         def claves = Clave.findAllByProyecto(proyecto)
-        idiomas.each{
-                it.delete(flush:true)
-        }
         claves.each{
                 it.delete(flush:true)        
         }
 
-        //creamos idioma Default
-        def i = new Idioma(nombre:"default",localeValue:"default",proyecto:proyecto)
-        i.save(flush:true)
-        return i
     }
 
 }
