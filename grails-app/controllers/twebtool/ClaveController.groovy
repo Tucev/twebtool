@@ -21,6 +21,7 @@ class ClaveController {
               def props = new Properties()
                 try{
                         props.load(f.inputStream)
+//TODO PROYECTO PRUEBA HARDCODEADO
                         claveService.initialImport(props, Proyecto.findByNombre('PRUEBA'))
                         flash.message = 'Imported!'
                 } catch(Exception e){

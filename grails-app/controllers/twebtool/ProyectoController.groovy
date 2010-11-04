@@ -2,6 +2,8 @@ package twebtool
 
 class ProyectoController {
 
+    def proyectoService
+
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index = {
@@ -22,14 +24,15 @@ class ProyectoController {
     }
 
     def save = {
-        def proyectoInstance = new Proyecto(params)
-        if (proyectoInstance.save(flush: true)) {
+        def proyectoInstance = proyectoService.newProyecto(params)
+        if (proyectoInstance.hasErrors()) {
+            render(view: "create", model: [proyectoInstance: proyectoInstance])
+        }
+        else {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'proyecto.label', default: 'Proyecto'), proyectoInstance.id])}"
             redirect(action: "show", id: proyectoInstance.id)
         }
-        else {
-            render(view: "create", model: [proyectoInstance: proyectoInstance])
-        }
+
     }
 
     def show = {
